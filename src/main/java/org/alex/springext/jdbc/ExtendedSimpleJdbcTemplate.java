@@ -21,8 +21,9 @@ public class ExtendedSimpleJdbcTemplate extends SimpleJdbcTemplate {
 	}
 
 	public int update(InsertUpdater update) {
-        String data = update.getPreparedSql();
-        Object[] args = update.getArgs();
+        InsertUpdaterPlaceHolder insertUpdaterPlaceHolder = (InsertUpdaterPlaceHolder)update;
+        String data = insertUpdaterPlaceHolder.getPreparedSql();
+        Object[] args = insertUpdaterPlaceHolder.getArgs();
         debugLogg(data, args);
 		return super.update(data, args);
 	}
@@ -41,7 +42,7 @@ public class ExtendedSimpleJdbcTemplate extends SimpleJdbcTemplate {
     }
 
     public InsertUpdater createUpdateTemplate(String tableName) {
-		return new InsertUpdater(tableName);
+		return new InsertUpdaterPlaceHolder(tableName);
 	}
 
 
