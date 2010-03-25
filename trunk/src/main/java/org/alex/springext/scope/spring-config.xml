@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       ">
+
+
+    <bean class="org.springframework.beans.factory.org.alex.config.CustomScopeConfigurer">
+    <property name="scopes">
+        <map>
+            <entry key="thread">
+                <bean class="com.te.ediel.util.spring.org.alex.springext.scope.ThreadScope"/>
+            </entry>
+        </map>
+    </property>
+</bean>
+
+</beans>
