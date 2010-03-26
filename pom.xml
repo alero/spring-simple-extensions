@@ -7,10 +7,10 @@
 	<name>Spring Extensions for Spring 3.0</name>
 	<version>1.0</version>
 
-	<description>Google Employee using GWT and Google App engine</description>
+	<description>Spring extensions</description>
 	<issueManagement>
 		<system>Google Code</system>
-		<url>http://code.google.com/p/gwtemployeeprofile/issues/list</url>
+		<url>http://code.google.com/spring-simple-extensions/issues/list</url>
 	</issueManagement>
 	<scm>
 		<tag>trunk</tag>
