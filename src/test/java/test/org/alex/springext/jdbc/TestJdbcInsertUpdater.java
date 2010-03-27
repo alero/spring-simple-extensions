@@ -1,7 +1,7 @@
 package test.org.alex.springext.jdbc;
 
-import org.alex.springext.jdbc.ExtendedSimpleJdbcTemplate;
-import org.alex.springext.jdbc.InsertUpdater;
+import org.hrodberaht.springext.jdbc.ExtendedSimpleJdbcTemplate;
+import org.hrodberaht.springext.jdbc.InsertUpdater;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

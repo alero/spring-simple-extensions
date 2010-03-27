@@ -11,7 +11,7 @@
            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
 
-    <context:component-scan base-package="test.org.alex.springext.scope"/>
+    <context:component-scan base-package="test.org.hrodberaht.springext.scope"/>
 
   
 
