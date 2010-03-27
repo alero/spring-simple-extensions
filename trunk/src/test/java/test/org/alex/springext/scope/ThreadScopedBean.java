@@ -1,6 +1,6 @@
 package test.org.alex.springext.scope;
 
-import org.alex.springext.scope.ScopeType;
+import org.hrodberaht.springext.scope.ScopeType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
