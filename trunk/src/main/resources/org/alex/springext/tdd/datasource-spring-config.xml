@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        "
+        >
+
+
+    <!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+    <bean id="dataSource" class="org.alex.springext.tdd.DataSourceFactory">
+        <property name="testDatabaseName" value="testdatabase"/>
+        <property name="schemaLocation" value="classpath:org/alex/springext/tdd/schema.sql"/>
+        <property name="testDataLocation" value=""/>
+    </bean>
+
+
+</beans>
