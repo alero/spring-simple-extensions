@@ -39,10 +39,24 @@ public class TestJdbcInsertUpdater {
         insertUpdater.field("name","John Doe");
         insertUpdater.field("email", "john@doe.com");
         insertUpdater.field("createdate", new Date());
-        extendedSimpleJdbcTemplate.update(insertUpdater);
+        int inserts = extendedSimpleJdbcTemplate.update(insertUpdater);
+        assertEquals(1, inserts);
 
         int id = extendedSimpleJdbcTemplate.queryForInt("select id from person where id = ?", 1);
-        assertEquals(1, id); 
+        assertEquals(1, id);
+        int count = extendedSimpleJdbcTemplate.queryForInt("select count(*) from person");
+        assertEquals(1, count);
+
+        insertUpdater = extendedSimpleJdbcTemplate.createUpdateTemplate("person");
+        insertUpdater.where("id", 1);
+        insertUpdater.field("name","John Dude");
+        insertUpdater.field("email", "john@doe.com");
+        insertUpdater.field("createdate", new Date());
+        int updates = extendedSimpleJdbcTemplate.update(insertUpdater);
+        assertEquals(1, updates);
+
+        count = extendedSimpleJdbcTemplate.queryForInt("select count(*) from person");
+        assertEquals(1, count);
 
     }
 

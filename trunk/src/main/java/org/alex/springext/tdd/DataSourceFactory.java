@@ -142,21 +142,6 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
 
     // static factory methods
 
-    /**
-     * Static factory method that creates a DataSource that connects to a test database populated with test data.
-     *
-     * @param testDatabaseName the name of the test database to create
-     * @param schemaLocation   the database schema to export
-     * @param testDataLocation the database test data to load
-     * @return the data source
-     */
-    public static DataSource createDataSource(String testDatabaseName, Resource schemaLocation,
-                                              Resource testDataLocation) {
-        return new DataSourceFactory(testDatabaseName, schemaLocation, testDataLocation).getDataSource();
-    }
-
-    // internal helper methods
-
     // encapsulates the steps involved in initializing the data source: creating it, and populating it
 
     private void initDataSource() {
@@ -210,7 +195,7 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
                 createDatabaseSchema(connection);
                 insertTestData(connection);
             } catch (SQLException e) {
-                throw new RuntimeException("SQL exception occurred acquiring connection", e);
+                throw new RuntimeException(e);
             } finally {
                 if (connection != null) {
                     try {
@@ -230,9 +215,9 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
                     executeSql(sql, connection);
                 }
             } catch (IOException e) {
-                throw new RuntimeException("I/O exception occurred accessing the database schema file", e);
+                throw new RuntimeException(e);
             } catch (SQLException e) {
-                throw new RuntimeException("SQL exception occurred exporting database schema", e);
+                throw new RuntimeException(e);
             }
         }
 
@@ -244,9 +229,9 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
                     executeSql(sql, connection);
                 }
             } catch (IOException e) {
-                throw new RuntimeException("I/O exception occurred accessing the test data file", e);
+                throw new RuntimeException(e);
             } catch (SQLException e) {
-                throw new RuntimeException("SQL exception occurred loading test data", e);
+                throw new RuntimeException(e);
             }
         }
 
