@@ -1,6 +1,6 @@
-package org.alex.springext.jdbc;
+package org.hrodberaht.springext.jdbc;
 
-import org.alex.logging.SimpleLogger;
+import org.hrodberaht.directus.logging.SimpleLogger;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
 import javax.sql.DataSource;

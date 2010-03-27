@@ -1,6 +1,6 @@
-package org.alex.springext.scope;
+package org.hrodberaht.springext.scope;
 
-import org.alex.logging.SimpleLogger;
+import org.hrodberaht.directus.logging.SimpleLogger;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

@@ -1,4 +1,4 @@
-package test.org.alex.springext.scope;
+package test.org.hrodberaht.springext.scope;
 
 import org.hrodberaht.springext.scope.ScopeType;
 import org.springframework.context.annotation.Scope;

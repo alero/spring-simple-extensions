@@ -15,9 +15,9 @@
 
 
     <!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
-    <bean id="dataSource" class="org.alex.springext.tdd.DataSourceFactory">
+    <bean id="dataSource" class="org.hrodberaht.springext.tdd.DataSourceFactory">
         <property name="testDatabaseName" value="testdatabase"/>
-        <property name="schemaLocation" value="classpath:org/alex/springext/tdd/schema.sql"/>
+        <property name="schemaLocation" value="classpath:org/hrodberaht/springext/tdd/schema.sql"/>
         <property name="testDataLocation" value=""/>
     </bean>
 
