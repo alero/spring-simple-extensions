@@ -1,4 +1,4 @@
-package test.org.alex.springext.jdbc;
+package test.org.hrodberaht.springext.jdbc;
 
 import org.hrodberaht.springext.jdbc.ExtendedSimpleJdbcTemplate;
 import org.hrodberaht.springext.jdbc.InsertUpdater;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-        locations = {"classpath:org/alex/springext/tdd/datasource-spring-config.xml"}
+        locations = {"classpath:org/hrodberaht/springext/tdd/datasource-spring-config.xml"}
 )
 public class TestJdbcInsertUpdater {
 

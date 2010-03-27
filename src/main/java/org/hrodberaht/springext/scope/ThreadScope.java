@@ -1,4 +1,4 @@
-package org.alex.springext.scope;
+package org.hrodberaht.springext.scope;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class ThreadScope implements Scope {
 
     /**
-     * Gets bean from org.alex.springext.scope.
+     * Gets bean from org.hrodberaht.springext.scope.
      */
     public Object get(String name, ObjectFactory factory) {
         Object result = null;
@@ -30,7 +30,7 @@ public class ThreadScope implements Scope {
     }
 
     /**
-     * Removes bean from org.alex.springext.scope.
+     * Removes bean from org.hrodberaht.springext.scope.
      */
     public Object remove(String name) {
         Object result = null;

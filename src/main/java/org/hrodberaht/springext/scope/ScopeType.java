@@ -1,4 +1,4 @@
-package org.alex.springext.scope;
+package org.hrodberaht.springext.scope;
 
 /**
  * Spring extensions

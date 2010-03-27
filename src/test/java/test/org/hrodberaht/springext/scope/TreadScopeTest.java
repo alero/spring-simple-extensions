@@ -1,4 +1,4 @@
-package test.org.alex.springext.scope;
+package test.org.hrodberaht.springext.scope;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +17,8 @@ import static junit.framework.Assert.assertNotNull;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-        locations = {"classpath:org/alex/springext/scope/spring-config.xml"
-                , "classpath:test/org/alex/springext/scope/test-spring-config.xml"}
+        locations = {"classpath:org/hrodberaht/springext/scope/spring-config.xml"
+                , "classpath:test/org/hrodberaht/springext/scope/test-spring-config.xml"}
 )
 public class TreadScopeTest {
 

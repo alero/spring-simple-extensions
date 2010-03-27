@@ -1,4 +1,4 @@
-package org.alex.springext.jdbc;
+package org.hrodberaht.springext.jdbc;
 
 import java.util.HashMap;
 import java.util.Map;

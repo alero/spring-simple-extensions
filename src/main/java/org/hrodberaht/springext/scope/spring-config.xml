@@ -10,7 +10,7 @@
     <property name="scopes">
         <map>
             <entry key="thread">
-                <bean class="org.alex.springext.scope.ThreadScope"/>
+                <bean class="org.hrodberaht.springext.scope.ThreadScope"/>
             </entry>
         </map>
     </property>

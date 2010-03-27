@@ -1,4 +1,4 @@
-package org.alex.springext.tdd;
+package org.hrodberaht.springext.tdd;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
