@@ -13,5 +13,6 @@
 
     <context:component-scan base-package="test.org.alex.springext.scope"/>
 
+  
 
 </beans>
