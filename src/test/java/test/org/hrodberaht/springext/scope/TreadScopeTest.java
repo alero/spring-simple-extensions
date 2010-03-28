@@ -31,4 +31,6 @@ public class TreadScopeTest {
         assertNotNull(bean);
     }
 
+    // TODO: create a useful test for ThreadScoped beans
+
 }
