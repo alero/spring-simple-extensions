@@ -21,7 +21,7 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
 
     private String databaseName;
     private Resource schemaLocation;
-    private Resource dataLocation;
+    private Resource testDataLocation;
 
     private DataSource dataSource;
 
@@ -44,12 +44,12 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
     }
 
     public void setTestDataLocation(Resource testDataLocation) {
-        this.dataLocation = testDataLocation;
+        this.testDataLocation = testDataLocation;
     }
 
     public void afterPropertiesSet() {
-        if (dataLocation != null) {
-            initDataSource();
+        if (testDataLocation != null) {
+            init();
         }
     }
 
@@ -67,39 +67,36 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
 
     public DataSource getDataSource() {
         if (dataSource == null) {
-            initDataSource();
+            init();
         }
         return dataSource;
     }
 
-    private void initDataSource() {
-        // create a data source
-        this.dataSource = createDataSource();
-        populateDataSource();
+    private void init() {
+        this.dataSource = create();
+        populate();
 
     }
 
-    private DataSource createDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        // load driver
+    private DataSource create() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();        
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-        // create it as an in-memmory version
         dataSource.setUrl("jdbc:hsqldb:mem:" + databaseName);
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         return dataSource;
     }
 
-    private void populateDataSource() {
-        TestDatabasePopulator populator = new TestDatabasePopulator(dataSource);
+    private void populate() {
+        Populator populator = new Populator(dataSource);
         populator.populate();
     }
 
-    private class TestDatabasePopulator {
+    private class Populator {
 
         private DataSource dataSource;
 
-        public TestDatabasePopulator(DataSource dataSource) {
+        public Populator(DataSource dataSource) {
             this.dataSource = dataSource;
         }
 
@@ -132,8 +129,8 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
 
         private void insertTestData(Connection connection) {
             try {
-                if (dataLocation != null) {
-                    String sql = parseSqlIn(dataLocation);
+                if (testDataLocation != null) {
+                    String sql = parseSqlIn(testDataLocation);
                     executeSql(connection, sql);
                 }
             } catch (IOException e) {
@@ -152,12 +149,11 @@ public class DataSourceFactory implements FactoryBean, InitializingBean {
                 StringWriter sw = new StringWriter();
                 BufferedWriter writer = new BufferedWriter(sw);
 
-                for (int c = reader.read(); c != -1; c = reader.read()) {
-                    writer.write(c);
+                for (int character = reader.read(); character != -1; character = reader.read()) {
+                    writer.write(character);
                 }
                 writer.flush();
                 return sw.toString();
-
             } finally {
                 SocketCloser.close(is);
             }
