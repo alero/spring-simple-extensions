@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import test.org.hrodberaht.springext.samplebean.SpringWiredService;
+import test.org.hrodberaht.springext.samplebean.SpringWiredSubService;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +25,7 @@ public class TestSpringSimpleContainerInstanceCreator {
     public void init(){
         String[] location = { "classpath:test/org/hrodberaht/springext/samplebean/test-spring-config.xml" };
         SpringSimpleContainerInstanceCreator instanceCreator =
-                new SpringSimpleContainerInstanceCreator(location, SpringWiredService.class);
+                new SpringSimpleContainerInstanceCreator(location);
         JavaContainerRegister.registerInstanceCreator(instanceCreator);
     }
 
@@ -39,6 +40,12 @@ public class TestSpringSimpleContainerInstanceCreator {
         wiredService.doSpringThing();
         assertEquals("Test of Service", wiredService.getSpringThing());
         assertEquals("SubService Information", wiredService.getSubServiceSpringThing());
+    }
+
+    @Test
+    public void testSubRegister(){
+        SpringWiredSubService wiredService = SimpleContainer.get(SpringWiredSubService.class);
+        assertEquals("SubService Information", wiredService.subServiceInfo());
     }
 
     @Test(expected = MessageRuntimeException.class)

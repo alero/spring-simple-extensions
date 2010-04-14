@@ -20,12 +20,20 @@ public class SpringSimpleContainerInstanceCreator implements SimpleContainerInst
     private Map<Class, Class> serviceRegister = new HashMap<Class, Class>();
     private ApplicationContext context = null;
 
-    public SpringSimpleContainerInstanceCreator(String[] locations, Class... services){
-        for(Class service:services){
-            serviceRegister.put(service, null);
-        }
+    public SpringSimpleContainerInstanceCreator(String[] locations){
         context = new ClassPathXmlApplicationContext(locations);
+        String[] beannames = context.getBeanDefinitionNames();
+        for(String beanname:beannames){
+            if(!beanname.startsWith("org.springframework")){
+                Object o = context.getBean(beanname);
+                Class[] _interfaces = o.getClass().getInterfaces();
+                if(_interfaces.length == 1){
+                    serviceRegister.put(_interfaces[0], null);                           
+                }
+            }
+        }
     }
+
 
     @Override
     public <T> T getService(Class<T> service) {        
