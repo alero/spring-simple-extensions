@@ -1,0 +1,1 @@
+Basic extensions of spring useful for normal develpoment
